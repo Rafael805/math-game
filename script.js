@@ -1,11 +1,9 @@
-var numberDisplay = document.getElementById("numberDisplay");
 var messageDisplay = document.querySelector("#message");
-var num1Display = document.getElementById("num1");
-var num2Display= document.getElementById("num2");
 var resetButton = document.querySelector("#reset");
-var modeButtons = document.querySelectorAll(".mode");
 var checkAnswer = document.querySelector('input[type=text]');
 var btn = document.querySelector('input[type=button][value=check]');
+var num1Display = document.getElementById("num1");
+var num2Display= document.getElementById("num2");
 var num1= Math.floor((Math.random() * 10) + 1);
 var num2 =Math.floor((Math.random() * 10) + 1);
 var answer = num1 + num2;

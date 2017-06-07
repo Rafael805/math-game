@@ -4,6 +4,11 @@
                 <meta charset="utf-8">
                 <title>RH</title>
                 <link rel="stylesheet" type="text/css" href="main.css">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/components/button.min.css">
+                <script
+                  src="https://code.jquery.com/jquery-3.2.1.min.js"
+                  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                  crossorigin="anonymous"></script>
         </head>
         <body>
 
@@ -11,13 +16,15 @@
                         <br />
                         Math Game</h1>
 
-
                 <div id="stripe">
                         <button id="reset">New Numbers</button>
                         <span id="message"></span>
                         <button class="mode selected">Easy</button>
                         <button class="mode">Hard</button>
                 </div>
+
+                <span id="timer"></span>
+                <p>Points<span id="points"> 0</span></p>
 
                 <div id="container">
                         <table width="300" align="center">
@@ -42,7 +49,10 @@
                                                 <input type="text" />
                                         </td>
                                         <td>
-                                                <input type="button" value="check"  />
+                                                <button class="ui primary button">
+                                                check
+                                                </button>
+
                                         </td>
                                 </tr>
                         </table>

@@ -30,6 +30,14 @@ button {
         outline: none;
 }
 
+p {
+        float: right;
+        color: white;
+        font-size: 1.5em;
+        margin: 0 20px;
+        padding: 0px;
+}
+
 button:hover {
         color: white;
         background: steelblue;
@@ -74,15 +82,7 @@ input[type="text"] {
 
 #timer{
         color: white;
-        font-size: 1.3em;
-        margin: 0 20px;
-        padding: 0px;
-}
-
-p {
-        float: right;
-        color: white;
-        font-size: 1.3em;
+        font-size: 1.5em;
         margin: 0 20px;
         padding: 0px;
 }
@@ -97,7 +97,3 @@ p {
         font-weight: bold;
         font-family: sans-serif;
 }
-
-/*input[type="button"] {
-        font-size: 2em;
-}*/

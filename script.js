@@ -32,6 +32,7 @@ $(function() {
                         messageDisplay.style.color = "green"; // change text color
                         h1.style.backgroundColor = "green";
                         points++; // add one to points variable
+                        // run if the points are greater than the previous highscore points
                         if(points > highScore) {
                                 highScore = points;
                         };
@@ -43,7 +44,6 @@ $(function() {
                         messageDisplay.style.color = "red";
                         h1.style.backgroundColor = "red";
                 }
-                // highScore = Math.max(highScore); // returns the largest of zero or more numbers
         });
 
         // clears the messageDisplay and changes the header background color to original
@@ -74,14 +74,29 @@ $(function() {
                         return;
                 }
                 else if(count === 0) {
-                        alert("Game Over");
+                        confirm("Press OK to play again");
                         points = 0;
                         pointsDisplay.textContent = 0;
-                        count=20;
+                        count = 20;
                         resetNums();
                         reset();
                 }
                  document.getElementById("timer").textContent = count + " secs";
         }
+
+        function resetTimer() {
+                count = 21;
+                points = 0;
+                highScore = 0;
+                pointsDisplay.textContent = 0;
+                highScoreDisplay.textContent = 0;
+        }
+
+        // RESET BUTTON
+        resetButton.addEventListener("click", function() {
+        reset();
+        resetNums();
+        resetTimer();
+        });
 
 });

@@ -1,17 +1,18 @@
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
-var checkAnswer = document.querySelector('input[type=text]');
-var btn = document.querySelector('input[type=button][value=check]');
+var checkAnswer = document.querySelector('input[type=text]'); document.querySelector('input[type=button][value=check]');
 var num1Display = document.getElementById("num1");
 var num2Display= document.getElementById("num2");
 var num1= Math.floor((Math.random() * 10) + 1);
 var num2 =Math.floor((Math.random() * 10) + 1);
 var header = document.querySelector("#h1");
+var modeButtons = document.querySelectorAll(".mode");
 var pointsDisplay = document.getElementById("points");
 var highScoreDisplay = document.getElementById("top");
 var points = 0;
 var highScore = 0;
+var mode = true;
 var answer = num1 + num2;
 num1Display.textContent = num1;
 num2Display.textContent = num2;
@@ -25,6 +26,7 @@ $(function() {
                 }
         });
 
+        // when check button is clicked
         $(".ui.primary.button").on("click", function() {
                 // if the value from input is equal to the actual answer execute
                 if (checkAnswer.value == answer) {
@@ -38,13 +40,40 @@ $(function() {
                         };
                         highScoreDisplay.textContent = highScore;
                         pointsDisplay.textContent = points;
-                        resetNums(); // new numbers after every correct answer
+                        if(mode === true) {
+                                resetNums();
+                        } else {
+                                resetHard();
+                        }
                 } else {
                         messageDisplay.textContent = "Try again";
                         messageDisplay.style.color = "red";
                         h1.style.backgroundColor = "red";
                 }
         });
+
+
+        $(".mode").on("click", function() {
+                reset();
+                resetHard();
+                resetTimer();
+                mode = false;
+        });
+
+        $("#easy").on("click", function() {
+                reset();
+                resetNums();
+                resetTimer();
+                mode = true;
+        });
+
+        function resetHard() {
+                num1 = Math.floor((Math.random() * 100) + 1);
+                num2 = Math.floor((Math.random() * 100) + 1);
+                num1Display.textContent = num1;
+                num2Display.textContent = num2;
+                answer = num1 + num2;
+        }
 
         // clears the messageDisplay and changes the header background color to original
         function reset() {
@@ -64,7 +93,7 @@ $(function() {
                 answer = num1 + num2;
         }
 
-        var count = 20;
+        var count = 200;
         var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 
         function timer() {
@@ -77,7 +106,7 @@ $(function() {
                         confirm("Press OK to play again");
                         points = 0;
                         pointsDisplay.textContent = 0;
-                        count = 20;
+                        count = 200;
                         resetNums();
                         reset();
                 }
@@ -85,7 +114,7 @@ $(function() {
         }
 
         function resetTimer() {
-                count = 21;
+                count = 210;
                 points = 0;
                 highScore = 0;
                 pointsDisplay.textContent = 0;

@@ -9,15 +9,16 @@ var num1= Math.floor((Math.random() * 10) + 1);
 var num2 =Math.floor((Math.random() * 10) + 1);
 var header = document.querySelector("#h1");
 var pointsDisplay = document.getElementById("points");
-var topScoreDisplay = document.getElementById("top");
+var highScoreDisplay = document.getElementById("top");
 var points = 0;
-var topScore = 0;
+var highScore = 0;
 var answer = num1 + num2;
 num1Display.textContent = num1;
 num2Display.textContent = num2;
 
 $(function() {
 
+        // allows user to press enter on keyoard to submit answer
         $("input").keydown(function(event) {
                 if(event.keyCode == 13) {
                         $(".ui.primary.button").trigger("click");
@@ -25,34 +26,45 @@ $(function() {
         });
 
         $(".ui.primary.button").on("click", function() {
+                // if the value from input is equal to the actual answer execute
                 if (checkAnswer.value == answer) {
-                        messageDisplay.textContent = "You are correct";
-                        messageDisplay.style.color = "green";
+                        messageDisplay.textContent = "You are correct"; // change text
+                        messageDisplay.style.color = "green"; // change text color
                         h1.style.backgroundColor = "green";
-                        points++;
-                        topScore = points;
-                        topScoreDisplay.textContent = topScore;
+                        points++; // add one to points variable
+                        if(points > highScore) {
+                                highScore = points;
+                        };
+                        highScoreDisplay.textContent = highScore;
                         pointsDisplay.textContent = points;
-                        reset();
+                        resetNums(); // new numbers after every correct answer
                 } else {
                         messageDisplay.textContent = "Try again";
                         messageDisplay.style.color = "red";
                         h1.style.backgroundColor = "red";
                 }
+                // highScore = Math.max(highScore); // returns the largest of zero or more numbers
         });
 
+        // clears the messageDisplay and changes the header background color to original
         function reset() {
-                        document.querySelector('input[type=text]').value = "";
-                        document.getElementById('num1').textContent = "";
-                        document.getElementById('num2').textContent = "";
-                        num1 = Math.floor((Math.random() * 10) + 1);
-                        num2 = Math.floor((Math.random() * 10) + 1);
-                        document.getElementById('num1').textContent = num1;
-                        document.getElementById('num2').textContent = num2;
-                        answer = num1 + num2;
+                        messageDisplay.textContent = "";
+                        h1.style.backgroundColor = "steelblue"
         };
 
-        var count = 300;
+        // resets numbers
+        function resetNums() {
+                checkAnswer.value = "";
+                num1Display.textContent = "";
+                num2Display.textContent = "";
+                num1 = Math.floor((Math.random() * 10) + 1);
+                num2 = Math.floor((Math.random() * 10) + 1);
+                num1Display.textContent = num1;
+                num2Display.textContent = num2;
+                answer = num1 + num2;
+        }
+
+        var count = 20;
         var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 
         function timer() {
@@ -65,7 +77,9 @@ $(function() {
                         alert("Game Over");
                         points = 0;
                         pointsDisplay.textContent = 0;
-                        count=30;
+                        count=20;
+                        resetNums();
+                        reset();
                 }
                  document.getElementById("timer").textContent = count + " secs";
         }

@@ -93,7 +93,7 @@ $(function() {
                 answer = num1 + num2;
         }
 
-        var count = 200;
+        var count = 40;
         var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 
         function timer() {
@@ -106,7 +106,7 @@ $(function() {
                         confirm("Press OK to play again");
                         points = 0;
                         pointsDisplay.textContent = 0;
-                        count = 200;
+                        count = 40;
                         resetNums();
                         reset();
                 }
@@ -114,7 +114,7 @@ $(function() {
         }
 
         function resetTimer() {
-                count = 210;
+                count = 40;
                 points = 0;
                 highScore = 0;
                 pointsDisplay.textContent = 0;
